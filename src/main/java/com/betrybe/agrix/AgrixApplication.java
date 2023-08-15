@@ -8,9 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * Application main class.
  */
-@SpringBootApplication(scanBasePackages = "com.betrybe.agrix")
-@EntityScan("com.betrybe.agrix.models.entities")
-@ComponentScan("com.betrybe.agrix")
+@SpringBootApplication
 public class AgrixApplication {
 
   public static void main(String[] args) {

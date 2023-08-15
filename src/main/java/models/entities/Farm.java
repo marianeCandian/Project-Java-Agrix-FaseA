@@ -19,7 +19,7 @@ public class Farm {
 
   private String name;
 
-  private Double size;
+  private double size;
 
   public Farm() {
   }
@@ -33,12 +33,8 @@ public class Farm {
     this.size = size;
   }
 
-  public long getId() {
+  public Long getId() {
     return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
   }
 
   public String getName() {
