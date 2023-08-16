@@ -11,8 +11,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @SpringBootApplication
 @ComponentScan("com.betrybe.agrix")
-@EntityScan("com.betrybe.agrix.model")
-@EnableJpaRepositories("com.betrybe.agrix.interfaces")
+@EntityScan("com.betrybe.agrix.models.entities")
+@EnableJpaRepositories("com.betrybe.agrix.models.repositories")
 public class AgrixApplication {
 
   public static void main(String[] args) {
