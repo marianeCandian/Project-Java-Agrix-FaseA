@@ -1,6 +1,7 @@
 package controllers;
 
 import dto.FarmDto;
+import dto.ResponseDto;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -39,6 +40,9 @@ public class FarmController {
     return ResponseEntity.status(HttpStatus.CREATED).body(newFarm);
   }
 
+  /**
+   * Metodo para pegar todos os Farms.
+   */
   @GetMapping()
   public List<FarmDto> getAllFarms() {
     List<Farm> allFarms = farmService.getAllFarms();
@@ -47,13 +51,35 @@ public class FarmController {
         .collect(Collectors.toList());
   }
 
+  /**
+   * Metodo para pegar um Farm pelo Id.
+   */
   @GetMapping("/{id}")
   public ResponseEntity<Farm> getFarmById(@PathVariable Long id) {
     Optional<Farm> farm = farmService.getFarmById(id);
-    if(farm.isEmpty()) {
+    if (farm.isEmpty()) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }
 
     return ResponseEntity.ok(farm.get());
   }
+
+  /**
+   * Metodo para atualizar um Farm.
+   */
+  public ResponseEntity<ResponseDto<Farm>> updateFarm(@PathVariable Long id,
+      @RequestBody FarmDto farmDto) {
+    Optional<Farm> optionalFarm = farmService.updateFarm(id, farmDto.toFarm());
+
+    if (optionalFarm.isEmpty()) {
+      ResponseDto<Farm> responseDto = new ResponseDto<>(
+          String.format("Não foi encontrado a fazenda de ID %d", id), null);
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDto);
+    }
+
+    ResponseDto<Farm> responseDto = new ResponseDto<>(
+        "Fazenda atualizada com sucesso!", optionalFarm.get());
+    return ResponseEntity.ok(responseDto);
+  }
+
 }

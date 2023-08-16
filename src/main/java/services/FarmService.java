@@ -34,4 +34,21 @@ public class FarmService {
   public Optional<Farm> getFarmById(Long id) {
     return farmRepository.findById(id);
   }
+
+  /**
+   * Metodo para atualizar um Farm.
+   */
+  public Optional<Farm> updateFarm(Long id, Farm farm) {
+    Optional<Farm> optionalFarm = farmRepository.findById(id);
+
+    if (optionalFarm.isPresent()) {
+      Farm farmFromDb = optionalFarm.get();
+      farmFromDb.setName(farm.getName());
+      farmFromDb.setSize(farm.getSize());
+
+      Farm uptatedFarm = farmRepository.save(farmFromDb);
+      return Optional.of(uptatedFarm);
+    }
+    return optionalFarm;
+  }
 }

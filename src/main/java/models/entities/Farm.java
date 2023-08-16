@@ -19,7 +19,7 @@ public class Farm {
 
   private String name;
 
-  private double size;
+  private Double size;
 
   public Farm() {
   }
@@ -48,6 +48,7 @@ public class Farm {
   public Double getSize() {
     return size;
   }
+
 
   public void setSize(Double size) {
     this.size = size;
