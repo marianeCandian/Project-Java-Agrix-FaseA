@@ -1,7 +1,7 @@
-package dto;
+package com.betrybe.agrix.controllers.dto;
 
 /**
- * Metodo para facilitar as respostas.
+ * Response DTO.
  */
 public record ResponseDto<T>(String message, T data) {
 

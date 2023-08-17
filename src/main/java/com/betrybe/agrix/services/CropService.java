@@ -1,14 +1,14 @@
-package services;
+package com.betrybe.agrix.services;
 
+import com.betrybe.agrix.models.entities.Crop;
+import com.betrybe.agrix.models.repositories.CropRepository;
 import java.util.List;
 import java.util.Optional;
-import models.entities.Crop;
-import models.repositories.CropRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Class CropService.
+ * Crop service.
  */
 @Service
 public class CropService {
@@ -16,7 +16,7 @@ public class CropService {
   private CropRepository cropRepository;
 
   /**
-   * Constructor CropService.
+   * Crop constructor.
    */
   @Autowired
   public CropService(CropRepository cropRepository) {
@@ -68,4 +68,5 @@ public class CropService {
   public List<Crop> getAllCrops() {
     return cropRepository.findAll();
   }
+
 }
